@@ -144,13 +144,19 @@ const PostDetail = ({
     <Root onSubmit={handleSubmit}>
       <Flex>
         <Image src={form.image} />
-        <Input name="image" onChange={handleInputChange} value={form.image} />
+        <Input
+          name="image"
+          onChange={handleInputChange}
+          value={form.image}
+          placeholder="Ajouter une url vers une image"
+        />
       </Flex>
       <Content>
         <TitleInput
           name="topic"
           onChange={handleInputChange}
           value={form.topic}
+          placeholder="Ajouter un sujet"
         />
         <Description
           name="description"
@@ -158,6 +164,7 @@ const PostDetail = ({
           rows={15}
           onChange={handleInputChange}
           value={form.description}
+          placeholder="Ajouter une description"
         />
         {isLogged && (
           <ButtonContainer>
