@@ -71,11 +71,12 @@ passport.use(
         );
 
         if (user) {
-          let errorMessage = req.t('emailUsed');
+          let errorMessage = 'emailUsed';
           if (user.provider) {
-            errorMessage = req.t('emailUsedProvider', {
-              provider: user.provider,
-            });
+            (errorMessage = 'emailUsedProvider'),
+              {
+                provider: user.provider,
+              };
           }
           return done({ email: errorMessage }, false);
         }

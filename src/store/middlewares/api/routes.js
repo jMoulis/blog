@@ -13,9 +13,14 @@ const queryBuilder = data => {
 
 const routes = {
   user: {
-    create: data => ({
+    signUp: data => ({
       method: 'post',
       url: '/auth/signup',
+      data,
+    }),
+    signIn: data => ({
+      method: 'post',
+      url: '/auth/signin',
       data,
     }),
   },

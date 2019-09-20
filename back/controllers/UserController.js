@@ -9,7 +9,7 @@ module.exports = {
     try {
       const { oldPassword, password } = req.body;
       const user = await User.findOne({ _id: req.params.userId });
-      if (!user) return res.status(404).send({ error: req.t('userNotFound') });
+      if (!user) return res.status(404).send({ error: 'userNotFound' });
       let values = {
         ...req.body,
       };
@@ -27,7 +27,7 @@ module.exports = {
             };
           } else {
             return res.status(404).send({
-              error: { oldPassword: req.t('messagePwd.invalidPassword') },
+              error: { oldPassword: 'messagePwd.invalidPassword' },
             });
           }
         } else {
@@ -68,7 +68,7 @@ module.exports = {
     try {
       const { password } = req.body;
       const user = await User.findOne({ _id: req.params.userId });
-      if (!user) return res.status(404).send({ error: req.t('userNotFound') });
+      if (!user) return res.status(404).send({ error: 'userNotFound' });
 
       if (user.provider) {
         await User.deleteOne({ _id: req.params.userId });
@@ -78,14 +78,13 @@ module.exports = {
       const isValidPassword = bcrypt.compareSync(password, user.password);
       if (!isValidPassword)
         return res.status(404).send({
-          error: { password: req.t('messagePwd.invalidPassword') },
+          error: { password: 'messagePwd.invalidPassword' },
         });
 
       await User.deleteOne({ _id: req.params.userId });
 
       return api.success({ message: 'deleted' });
     } catch (error) {
-      console.log(error);
       return api.failure(error, 422);
     }
   },

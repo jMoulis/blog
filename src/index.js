@@ -9,7 +9,6 @@ import store from 'store';
 import App from 'components/App';
 import * as serviceWorker from './serviceWorker';
 
-// TODO: Add errour boudary
 ReactDOM.render(
   <Router>
     <Provider store={store}>
