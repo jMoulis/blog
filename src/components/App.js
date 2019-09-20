@@ -52,7 +52,7 @@ function App({ isLogged, logoutAction }) {
     <Root>
       <Header>
         <Container>
-          <Title to="/">BlogTitle</Title>
+          <Title to="/">Mon blog de dingue</Title>
           <ToolBar>
             {isLogged ? (
               <>
