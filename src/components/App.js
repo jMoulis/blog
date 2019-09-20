@@ -4,6 +4,7 @@ import Header from 'components/Header';
 import styled from '@emotion/styled';
 import PostDetail from 'components/Post/PostDetail';
 import Login from 'components/Auth/Login';
+import SignUp from 'components/Auth/SignUp';
 import { Switch, Route, Link } from 'react-router-dom';
 import HomePage from 'components/HomePage';
 import { logout } from 'store/reducers/authReducer';
@@ -82,6 +83,7 @@ function App({ isLogged, logoutAction }) {
             render={router => <PostDetail {...router} mode="edit" />}
           />
           <Route exact path="/login" component={Login} />
+          <Route exact path="/signup" component={SignUp} />
           <Route exact path="/logout" component={Login} />
         </Switch>
       </Content>

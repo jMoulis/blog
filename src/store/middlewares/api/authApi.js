@@ -1,6 +1,7 @@
 import axios from 'axios';
 import {
   SIGN_IN,
+  SIGN_UP,
   FETCH_LOGGED_USER,
   EDIT_LOGGED_USER,
   DELETE_LOGGED_USER,
@@ -23,6 +24,22 @@ export default store => next => action => {
   switch (action.type) {
     case SIGN_IN: {
       const url = '/auth/signin';
+      axios({
+        method: 'post',
+        url,
+        data: action.values,
+      })
+        .then(({ data }) => {
+          Api.success(data, fetchLoggedUserSuccess, 500);
+          storage.add('token', data.token);
+        })
+        .catch(error => {
+          Api.failure(error, fetchLoggedUserFailure, 500);
+        });
+      break;
+    }
+    case SIGN_UP: {
+      const url = '/auth/signup';
       axios({
         method: 'post',
         url,

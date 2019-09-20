@@ -36,8 +36,8 @@ routes(app);
 app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, '../build', 'index.html'));
 });
-const PORT = process.env.PORT || 9000;
-server.listen(9000, () => {
+const PORT = process.env.PORT || 7000;
+server.listen(PORT, () => {
   console.log('Listen PORT', PORT);
 });
 module.exports = app;

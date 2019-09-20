@@ -1,4 +1,5 @@
 export const SIGN_IN = 'SIGN_IN';
+export const SIGN_UP = 'SIGN_UP';
 export const LOGOUT = 'LOGOUT';
 
 export const FETCH_LOGGED_USER = 'FETCH_LOGGED_USER';
@@ -35,6 +36,9 @@ const initialState = {
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
     case SIGN_IN: {
+      return { ...state, isLogged: false, loading: true };
+    }
+    case SIGN_UP: {
       return { ...state, isLogged: false, loading: true };
     }
     case FETCH_LOGGED_USER: {
@@ -155,6 +159,11 @@ export default reducer;
 
 export const signIn = values => ({
   type: SIGN_IN,
+  values,
+});
+
+export const signUp = values => ({
+  type: SIGN_UP,
   values,
 });
 
