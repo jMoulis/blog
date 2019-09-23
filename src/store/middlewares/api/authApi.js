@@ -35,21 +35,12 @@ export default store => next => async action => {
       break;
     }
     case FETCH_LOGGED_USER: {
-      const url = '/auth/logged_user';
-      const token = storage.get('token');
-      axios({
-        method: 'get',
-        url,
-        headers: {
-          Authorization: `bearer ${token}`,
-        },
-      })
-        .then(({ data }) => {
-          store.dispatch(fetchLoggedUserSuccess(data));
-        })
-        .catch(error => {
-          store.dispatch(fetchLoggedUserFailure({ ...error.response }));
-        });
+      try {
+        const { data } = await axios(routes.user.fetchLoggedUser());
+        Api.success(data, fetchLoggedUserSuccess, 500);
+      } catch (error) {
+        Api.failure(error, fetchLoggedUserFailure);
+      }
       break;
     }
     default:

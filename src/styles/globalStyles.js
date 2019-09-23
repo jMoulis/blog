@@ -1,5 +1,4 @@
 import { css } from '@emotion/core';
-import theme from './theme';
 
 export default css`
   *,
@@ -9,7 +8,7 @@ export default css`
     padding: 0;
     box-sizing: inherit;
     font-family: 'roboto', sans-serif;
-    color: ${theme.colors.gray};
+    color: gray;
   }
   html {
     font-size: 62.5%;
@@ -23,22 +22,5 @@ export default css`
   #root {
     display: flex;
     height: inherit;
-  }
-
-  .ql-editor .ql-size-huge {
-    font-size: 10rem;
-  }
-  .ql-font-roboto {
-    font-family: 'roboto', sans-serif;
-    font-weight: 400;
-  }
-  .ql-font-baloo {
-    font-family: 'Baloo Thambi', cursive;
-  }
-  .ql-font span[data-label='roboto']::before {
-    font-family: 'roboto';
-  }
-  .ql-font span[data-label='Baloo']::before {
-    font-family: 'Baloo Thambi';
   }
 `;
